@@ -708,33 +708,36 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
+  
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContainer}
         testID="scrollContainer"
       >
         <View style={styles.headerContainer} testID="headerContainer">
-        <Image
-            source={{uri:'https://cdn.pixabay.com/photo/2017/02/23/13/05/avatar-2092113_1280.png'}}
+          <Image
+            source={{
+              uri: "https://cdn.pixabay.com/photo/2017/02/23/13/05/avatar-2092113_1280.png",
+            }}
             style={styles.avatar}
           />
-          <Text style={styles.greetingText}>Hello, User!</Text>
         </View>
-
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Make your own food,</Text>
-          <Text style={styles.subtitle}>
-            stay at <Text style={styles.highlight}>home</Text>
-          </Text>
-        </View>
-
+  
         <View testID="categoryList">
-       
+          <Categories
+            categories={categories}
+            activeCategory={activeCategory}
+            handleChangeCategory={handleChangeCategory}
+          />
         </View>
-
+  
         <View testID="foodList">
-
-          </View>
+          <FoodItems
+            foods={filteredfoods}
+            categories={categories}
+          />
+        </View>
+  
       </ScrollView>
     </View>
   );
